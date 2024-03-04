@@ -19,11 +19,11 @@ from django.urls import path,include
 from rest_framework import routers
 from API.api import viewsets 
 
-route = routers.DefaultRouter()
-route.register (r'usuario',viewsets.UsuarioViewset,basename = "Usuario")
+router = routers.DefaultRouter()
+router.register (r'usuario',viewsets.UsuarioViewset,basename = "Usuario")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
-    path('',include(route.urls))
+    path('',include(router.urls))
 ]
