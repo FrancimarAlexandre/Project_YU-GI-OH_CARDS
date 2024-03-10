@@ -1,4 +1,4 @@
-#!/home/alexandre/Documentos/GitHub/Project_YU-GI-OH_CARDS/back-end/venv/bin/python3
+#!/home/alexandre/Documentos/Github/Project_YU-GI-OH_CARDS/back-end/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

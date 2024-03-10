@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/alexandre/Documentos/GitHub/Project_YU-GI-OH_CARDS/back-end/venv"
+VIRTUAL_ENV="/home/alexandre/Documentos/Github/Project_YU-GI-OH_CARDS/back-end/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
