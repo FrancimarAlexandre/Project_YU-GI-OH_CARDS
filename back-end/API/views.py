@@ -5,6 +5,7 @@ import requests
 def exibir_card(request):
     requisicao = requests.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?language=pt")
     dados = requisicao.json()['data']
+    lista_cards = []  # Lista para armazenar os dados de cada card
   
     if dados:
         for card in dados:
@@ -21,26 +22,28 @@ def exibir_card(request):
             race = card.get('race', 'N/A')
             attribute = card.get('attribute', 'N/A')
 
-            # Obtém a URL da imagem, garantindo que 'card_images' é uma lista e acessando o primeiro elemento
-            if card.get('card_images'):  # Verifica se 'card_images' existe e não está vazia
-                img_card = card['card_images'][0].get('image_url')
-            else:
-                img_card = 'N/A'  # Valor padrão caso não existam imagens
+            # Obtém a URL da imagem
+            img_card = 'N/A'  # Valor padrão caso não existam imagens
+            if 'card_images' in card and card['card_images']:
+                img_card = card['card_images'][0].get('image_url', 'N/A')
 
-            contexto = {
+            # Cria um dicionário para o card atual e adiciona à lista
+            card_data = {
                 'id': id_card,
                 'name': name,
-                'typo':tipo,
-                'frametype':frameType,
-                'desc':desc,
-                'atk':atk,
-                'def':defe,
-                'level':level,
-                'race':race,
-                'attribute':attribute,
+                'type': tipo,
+                'frameType': frameType,
+                'desc': desc,
+                'atk': atk,
+                'def': defe,
+                'level': level,
+                'race': race,
+                'attribute': attribute,
                 'img': img_card
             }
-            
-    
+            lista_cards.append(card_data)
+
+    # Passando a lista de cards para o template
+    return render(request, 'index.html', {'cards': lista_cards})
 
     
