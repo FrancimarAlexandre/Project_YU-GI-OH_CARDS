@@ -27,23 +27,50 @@ def exibir_card(request):
             if 'card_images' in card and card['card_images']:
                 img_card = card['card_images'][0].get('image_url', 'N/A')
 
-            # Cria um dicionário para o card atual e adiciona à lista
-            card_data = {
-                'id': id_card,
-                'name': name,
-                'type': tipo,
-                'frameType': frameType,
-                'desc': desc,
-                'atk': atk,
-                'def': defe,
-                'level': level,
-                'race': race,
-                'attribute': attribute,
-                'img': img_card
-            }
-            lista_cards.append(card_data)
+            # condição para saber o tipo da carte e coletar os dados por tipo
+            if tipo == "Spell Card" or tipo == "Trap Card":
+                     # Cria um dicionário para o card atual e adiciona à lista
+                    card_data = {
+                        'id': id_card,
+                        'name': name,
+                        'type': tipo,
+                        'frameType': frameType,
+                        'desc': desc,
+                        'img': img_card
+                    }
+                    lista_cards.append(card_data)
+            elif tipo == "Link Monster":
+                       # Cria um dicionário para o card atual e adiciona à lista
+                        card_data = {
+                            'id': id_card,
+                            'name': name,
+                            'type': tipo,
+                            'frameType': frameType,
+                            'desc': desc,
+                            'atk': atk,
+                            'race': race,
+                            'attribute': attribute,
+                            'img': img_card
+                        }
+                        lista_cards.append(card_data)
+            else:
+                # Cria um dicionário para o card atual e adiciona à lista
+                card_data = {
+                    'id': id_card,
+                    'name': name,
+                    'type': tipo,
+                    'frameType': frameType,
+                    'desc': desc,
+                    'atk': atk,
+                    'def': defe,
+                    'level': level,
+                    'race': race,
+                    'attribute': attribute,
+                    'img': img_card
+                }
+                lista_cards.append(card_data)
 
     # Passando a lista de cards para o template
-    return render(request, 'index.html', {'cards': lista_cards})
+    return render(request, 'index.html', {'cards': lista_cards[::150]})
 
     
