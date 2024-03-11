@@ -1,7 +1,20 @@
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponse
+from .models import *
 import requests
 # Create your views here.
 
+def cadastro_usuario(request):
+    if request == 'GET':
+        usuario = Usuario()
+        usuario.username = request.GET.get('username')
+        usuario.password = request.GET.get('password')
+        usuario.email = request.GET.get('email')
+        usuario.save()
+        return HttpResponse('usuário cadastrado com suscesso')
+    else:
+        return HttpResponse("nenhum dado infromado")
+#########################################################
+# Cards
 def exibir_card(request):
     requisicao = requests.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?language=pt")
     dados = requisicao.json()['data']

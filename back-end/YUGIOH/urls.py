@@ -18,13 +18,13 @@ from django.contrib import admin
 from django.urls import path,include
 from rest_framework import routers
 from API.api import viewsets 
-
+from API import urls
 router = routers.DefaultRouter()
 router.register (r'usuario',viewsets.UsuarioViewset,basename = "Usuario")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls')),
+    path('auth/', include(urls)),
     path('',include(router.urls)),
 
 ]
