@@ -1,19 +1,32 @@
-from django.shortcuts import render,HttpResponse
-from .models import *
 import requests
+from django.shortcuts import render
+from django.http import HttpResponse, JsonResponse
+
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
+
+from .models import Usuario,FavoriteCard
+from .api.serializers import UsuarioSerializers,FavoritoCArdSerializers
+
+import json
 # Create your views here.
 
-def cadastro_usuario(request):
-    if request == 'GET':
-        usuario = Usuario()
-        usuario.username = request.GET.get('username')
-        usuario.password = request.GET.get('password')
-        usuario.email = request.GET.get('email')
-        usuario.save()
-        return HttpResponse('usuário cadastrado com suscesso')
-    else:
-        return HttpResponse("nenhum dado infromado")
-#########################################################
+# CRUD
+@api_view(['GET','POST','PUT','DELETE'])
+def user_manager(request):
+    # POST
+    if request.method == 'POST':
+        new_user = request.data
+        serializer = UsuarioSerializers(data = new_user)
+        if serializer.is_valid():
+            serializer.save()
+            
+            return Response(serializer.data,status = status.HTTP_201_CREATED)
+            
+        return Response(status = status.HTTP_400_BAD_REQUEST)
+
+
 # Cards
 def exibir_card(request):
     requisicao = requests.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?language=pt")
