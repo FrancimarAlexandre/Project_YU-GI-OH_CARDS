@@ -1,13 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
+<header style="background-color: blue;height: 50px;">
+    <div style=" align-items: center;">
+        <h2 style="color: darkgoldenrod;  position: absolute; text-align: center;">YU-GI-OG cards</h2>
+    </div>
+</header>
+
+<div>
     {% for i in cards %}
-    {{ i.name }}
+    <h3>nome</h3>
+    <p>{{ i.name }}</p>
+    
     {% endfor %}
+</div>
 </body>
 </html>

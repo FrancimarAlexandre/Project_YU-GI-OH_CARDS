@@ -5,8 +5,6 @@ Recreating the web programming discipline project
 
 ## Technology used in the project
     - DJANGO
-    - DJANGO REST FRAMEWORK
-    - REACT
-    - NEXT.JS
+    - PYTHON
     - SQLITE3
     
