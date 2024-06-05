@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.exibir_card),
     path('accounts/',include('django.contrib.auth.urls')),
+    path('accounts/register/',views.register,name="registro"),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
