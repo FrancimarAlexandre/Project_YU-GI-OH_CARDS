@@ -1,0 +1,75 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f3f2ef;
+}
+
+header {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-top {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.container {
+    width: 60%;
+    margin: 120px auto;
+    overflow: hidden;
+}
+
+article {
+    background-color: #fff;
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 2px -2px gray;
+}
+
+
+/* Ajustes para o nome de usuário e botão SAIR */
+.user-logout {
+    flex-direction: column;
+    /* Organiza os elementos um abaixo do outro */
+    align-items: flex-end;
+    /* Alinha os elementos à direita */
+}
+
+/* Espaçamento entre o nome de usuário e o botão SAIR */
+.user-logout h4,
+.user-logout form {
+    margin: 0 0 5px;
+    /* Ajusta conforme necessário */
+}
+
+.button-link {
+    background-color: #0073b1;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.button-link:hover,
+.button-link:focus {
+    background-color: #0056b3;
+    color: white;
+    text-decoration: none;
+}

@@ -4,13 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'home.css' %}">
 </head>
 <body>
-<header style="background-color: blue;height: 50px;">
-    <div style=" align-items: center;">
-        <h2 style="color: darkgoldenrod;  position: absolute; text-align: center;">YU-GI-OG cards</h2>
-    </div>
-</header>
+    <header>
+        <div class="header-top">
+            <h1>YU-GI-OG Cards</h1>
+            <div class="user-logout">
+                <h4>{{ request.user.username }}</h4>
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit"><i class="fas fa-sign-out-alt"></i> SAIR</button>
+                </form>
+            </div>
+        </div>
+    </header>
 
 <div>
     {% for i in cards %}

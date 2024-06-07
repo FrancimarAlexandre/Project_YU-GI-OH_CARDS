@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
-import requests
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required
+import requests
 # Create your views here.
 def register(request):
     if request.method == 'POST':
@@ -29,6 +30,7 @@ def register(request):
     
     return render(request, 'registration/register.html')
 # Exibir as cartas
+@login_required
 def exibir_card(request):
     requisicao = requests.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?language=pt")
     dados = requisicao.json()['data']
