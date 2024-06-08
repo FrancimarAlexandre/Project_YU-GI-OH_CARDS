@@ -23,11 +23,9 @@
         </div>
     </header>
 
-<div>
+<div class="container">
     {% for i in cards %}
-    <h3>nome</h3>
-    <p>{{ i.name }}</p>
-    
+    <button ><img class="image_card" src= {{ i.img }} alt="img_card"></button>
     {% endfor %}
 </div>
 </body>

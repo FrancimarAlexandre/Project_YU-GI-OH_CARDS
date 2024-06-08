@@ -4,6 +4,25 @@ body {
     padding: 0;
     box-sizing: border-box;
     background-color: #f3f2ef;
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    min-height: 100vh; /* Garante que o corpo ocupe toda a altura da viewport */
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que as imagens quebrem para a próxima linha, se necessário */
+    justify-content: center; /* Centraliza as imagens dentro da container */
+    gap: 10px; /* Espaçamento entre os itens */
+    max-width: 100%; /* Garante que o container não seja maior que a tela */
+    padding: 10px; /* Adiciona um pouco de espaçamento interno */
+}
+
+.image_card {
+    max-width: 220px; /* Garante que as imagens não sejam maiores que o botão */
+    height: auto; /* Mantém a proporção da imagem */
 }
 
 header {
@@ -27,11 +46,7 @@ header {
 }
 
 
-.container {
-    width: 60%;
-    margin: 120px auto;
-    overflow: hidden;
-}
+
 
 article {
     background-color: #fff;
@@ -73,3 +88,4 @@ article {
     color: white;
     text-decoration: none;
 }
+
