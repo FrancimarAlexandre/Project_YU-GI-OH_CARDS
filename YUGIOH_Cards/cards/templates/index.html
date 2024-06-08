@@ -25,7 +25,9 @@
 
 <div class="container">
     {% for i in cards.object_list %}
-    <button ><img class="image_card" src= {{ i.img }} alt="img_card"></button>
+    <form action="{% url 'info' %}" method="get">
+        <button ><img class="image_card" src= {{ i.img }} alt="img_card"></button>
+    </form>
     {% endfor %}
 
     <div class="paginator">
