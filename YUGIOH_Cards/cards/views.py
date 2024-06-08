@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 import requests
 # Create your views here.
 def register(request):
@@ -35,7 +36,6 @@ def exibir_card(request):
     requisicao = requests.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?language=pt")
     dados = requisicao.json()['data']
     lista_cards = []  # Lista para armazenar os dados de cada card
-  
     if dados:
         for card in dados:
             id_card = card.get('id')
@@ -99,5 +99,9 @@ def exibir_card(request):
                 }
                 lista_cards.append(card_data)
 
+                # Páginator
+                cards = Paginator(lista_cards,200)
+                page_num = request.GET.get('page')
+                page = cards.get_page(page_num)
     # Passando a lista de cards para o template
-    return render(request, 'index.html', {'cards': lista_cards[::150]})
+    return render(request, 'index.html', {'cards': page})

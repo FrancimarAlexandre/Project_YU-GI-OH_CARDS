@@ -24,9 +24,18 @@
     </header>
 
 <div class="container">
-    {% for i in cards %}
+    {% for i in cards.object_list %}
     <button ><img class="image_card" src= {{ i.img }} alt="img_card"></button>
     {% endfor %}
+
+    <div class="paginator">
+        {% if cards.has_previous %}
+        <a href="{% url 'homepage' %}?page={{ cards.previous_page_number }}">Anterior</a>
+        {% endif %}
+        {% if cards.has_next %}
+        <a href="{% url 'homepage' %}?page={{ cards.next_page_number }}">Próximo</a>
+        {% endif %}
+    </div>
 </div>
 </body>
 </html>
