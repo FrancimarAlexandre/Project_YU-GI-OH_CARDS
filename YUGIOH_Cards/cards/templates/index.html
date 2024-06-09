@@ -12,7 +12,7 @@
 <body>
     <header>
         <div class="header-top">
-            <h1>YU-GI-OG Cards</h1>
+            <h1>YU-GI-OH Cards</h1>
             <div class="user-logout">
                 <h4>{{ request.user.username }}</h4>
                 <form method="post" action="{% url 'logout' %}">
@@ -23,22 +23,26 @@
         </div>
     </header>
 
-<div class="container">
- 
-    {% for i in cards.object_list %}
-        
-        <button type="submit" ><img class="image_card" src= {{ i.img }} alt="img_card"></button>
-    {% endfor %}
-  
+    <div class="container">
+        {% for i in cards.object_list %}
+            <div class="card-container">
+                <button type="button" class="toggleButton"><img class="image_card" src="{{ i.img }}" alt="img_card"></button>
+                <div id="div_{{ forloop.counter }}" class="hidden">
+                    <p>Nome: {{ i.name }}</p>
+                </div>
+            </div>
+        {% endfor %}
 
-    <div class="paginator">
-        {% if cards.has_previous %}
-        <a href="{% url 'homepage' %}?page={{ cards.previous_page_number }}">Anterior</a>
-        {% endif %}
-        {% if cards.has_next %}
-        <a href="{% url 'homepage' %}?page={{ cards.next_page_number }}">Próximo</a>
-        {% endif %}
+        <div class="paginator">
+            {% if cards.has_previous %}
+                <a href="{% url 'homepage' %}?page={{ cards.previous_page_number }}">Anterior</a>
+            {% endif %}
+            {% if cards.has_next %}
+                <a href="{% url 'homepage' %}?page={{ cards.next_page_number }}">Próximo</a>
+            {% endif %}
+        </div>
     </div>
-</div>
+
+    <script src="{% static 'js/home.js' %}"></script>
 </body>
 </html>
