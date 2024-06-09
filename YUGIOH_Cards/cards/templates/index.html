@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="{% static 'home.css' %}">
 </head>
+
 <body>
     <header>
         <div class="header-top">
@@ -25,40 +27,66 @@
 
     <div class="container">
         {% for i in cards.object_list %}
-            <div class="card-container">
-                <button type="button" class="toggleButton"><img class="image_card" src="{{ i.img }}" alt="img_card"></button>
-                <div id="div_{{ forloop.counter }}" class="hidden">
-                    <p>Nome: {{ i.name }}</p>
-                    <b></b>
-                    <p>descrição: {{ i.desc }}</p>
-                    <b></b>
-                    <p>atk: {{ i.atk }}</p>
-                    <b></b>
-                    <p>def: {{ i.defe }}</p>
-                    <b></b>
-                    <p>tipo: {{ i.tipo }}</p>
-                    <b></b>
-                    <p>frameType: {{ i.frameType }}</p>
-                    <b></b>
-                    <p>level: {{ i.level }}</p>
-                    <b></b>
-                    <p>raça: {{ i.race }}</p>
-                    <b></b>
-                    <p>atributos: {{ i.attribute }}</p>
-                </div>
+        <div class="card-container">
+            <button type="button" class="toggleButton"><img class="image_card" src="{{ i.img }}"
+                    alt="img_card"></button>
+            <div id="div_{{ forloop.counter }}" class="hidden">
+                {% if i.tipo == "Spell Card" or i.tipo == "Trap Card" %}
+                <p>Nome: {{ i.name }}</p>
+                <b></b>
+                <p>Descrição: {{ i.desc }}</p>
+                <b></b>
+                <p>Tipo: {{ i.tipo }}</p>
+                <b></b>
+                <p>FrameType: {{ i.frameType }}</p>
+                {% elif i.tipo == "Link Monster" %}
+                <p>Nome: {{ i.name }}</p>
+                <b></b>
+                <p>Descrição: {{ i.desc }}</p>
+                <b></b>
+                <p>Tipo: {{ i.tipo }}</p>
+                <b></b>
+                <p>FrameType: {{ i.frameType }}</p>
+                <b></b>
+                <p>ATK: {{ i.atk }}</p>
+                <b></b>
+                <p>Raça: {{ i.race }}</p>
+                <b></b>
+                <p>Atributos: {{ i.attribute }}</p>
+                {% else %}
+                <p>Nome: {{ i.name }}</p>
+                <b></b>
+                <p>Descrição: {{ i.desc }}</p>
+                <b></b>
+                <p>Tipo: {{ i.tipo }}</p>
+                <b></b>
+                <p>FrameType: {{ i.frameType }}</p>
+                <b></b>
+                <p>ATK: {{ i.atk }}</p>
+                <b></b>
+                <p>DEF: {{ i.def }}</p>
+                <b></b>
+                <p>Level: {{ i.level }}</p>
+                <b></b>
+                <p>Raça: {{ i.race }}</p>
+                <b></b>
+                <p>Atributos: {{ i.attribute }}</p>
+                {% endif %}
             </div>
+        </div>
         {% endfor %}
 
         <div class="paginator">
             {% if cards.has_previous %}
-                <a href="{% url 'homepage' %}?page={{ cards.previous_page_number }}">Anterior</a>
+            <a href="{% url 'homepage' %}?page={{ cards.previous_page_number }}">Anterior</a>
             {% endif %}
             {% if cards.has_next %}
-                <a href="{% url 'homepage' %}?page={{ cards.next_page_number }}">Próximo</a>
+            <a href="{% url 'homepage' %}?page={{ cards.next_page_number }}">Próximo</a>
             {% endif %}
         </div>
     </div>
-
+    
     <script src="{% static 'js/home.js' %}"></script>
 </body>
+
 </html>
