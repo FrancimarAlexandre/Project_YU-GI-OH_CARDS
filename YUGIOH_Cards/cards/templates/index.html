@@ -29,6 +29,22 @@
                 <button type="button" class="toggleButton"><img class="image_card" src="{{ i.img }}" alt="img_card"></button>
                 <div id="div_{{ forloop.counter }}" class="hidden">
                     <p>Nome: {{ i.name }}</p>
+                    <b></b>
+                    <p>descrição: {{ i.desc }}</p>
+                    <b></b>
+                    <p>atk: {{ i.atk }}</p>
+                    <b></b>
+                    <p>def: {{ i.defe }}</p>
+                    <b></b>
+                    <p>tipo: {{ i.tipo }}</p>
+                    <b></b>
+                    <p>frameType: {{ i.frameType }}</p>
+                    <b></b>
+                    <p>level: {{ i.level }}</p>
+                    <b></b>
+                    <p>raça: {{ i.race }}</p>
+                    <b></b>
+                    <p>atributos: {{ i.attribute }}</p>
                 </div>
             </div>
         {% endfor %}
