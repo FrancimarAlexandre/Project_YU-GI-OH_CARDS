@@ -4,16 +4,20 @@ body {
     padding: 0;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza horizontalmente */
-    padding-top: 60px; /* Espaço para a navbar */
-    min-height: 100vh; /* Garante que o corpo ocupe toda a altura da viewport */
+    align-items: center;
+    /* Centraliza horizontalmente */
+    padding-top: 60px;
+    /* Espaço para a navbar */
+    min-height: 100vh;
+    /* Garante que o corpo ocupe toda a altura da viewport */
     background: url('img/img_index.gif') no-repeat center center fixed;
     background-size: cover;
 }
 
 
 header {
-    background-color: #0056b3; /* Header totalmente transparente */
+    background-color: #0056b3;
+    /* Header totalmente transparente */
     color: #ffffff;
     padding: 10px 0;
     text-align: center;
@@ -33,25 +37,33 @@ header {
 .title {
     font-size: 45px;
     text-decoration: dotted;
-    color: #fff; /* Cor branca para se destacar no fundo */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para destacar o texto */
+    color: #fff;
+    /* Cor branca para se destacar no fundo */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    /* Sombra para destacar o texto */
     margin: 0;
 }
 
 .container {
     display: flex;
-    flex-wrap: wrap; /* Permite que as imagens quebrem para a próxima linha, se necessário */
-    justify-content: center; /* Centraliza as imagens dentro do container */
-    gap: 10px; /* Espaçamento entre os itens */
-    padding: 10px; /* Adiciona espaçamento interno */
-    flex-grow: 1; /* Faz o container crescer para ocupar o espaço disponível */
+    flex-wrap: wrap;
+    /* Permite que as imagens quebrem para a próxima linha, se necessário */
+    justify-content: center;
+    /* Centraliza as imagens dentro do container */
+    gap: 10px;
+    /* Espaçamento entre os itens */
+    padding: 10px;
+    /* Adiciona espaçamento interno */
+    flex-grow: 1;
+    /* Faz o container crescer para ocupar o espaço disponível */
 }
 
 .card-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 220px; /* Largura fixa para as imagens */
+    width: 220px;
+    /* Largura fixa para as imagens */
     height: auto;
     background-color: #fff;
     border-radius: 8px;
@@ -60,8 +72,10 @@ header {
 }
 
 .image_card {
-    max-width: 100%; /* Garante que as imagens não sejam maiores que o container */
-    height: auto; /* Mantém a proporção da imagem */
+    max-width: 100%;
+    /* Garante que as imagens não sejam maiores que o container */
+    height: auto;
+    /* Mantém a proporção da imagem */
 }
 
 .paginator {
@@ -92,6 +106,7 @@ article {
     border-radius: 8px;
     box-shadow: 0 4px 2px -2px gray;
 }
+
 .header-top {
     width: 80%;
     display: flex;
@@ -104,7 +119,8 @@ article {
     justify-content: center;
     align-items: flex-start;
     padding: 20px;
-    margin-top: 70px; /* Espaço para a navbar */
+    margin-top: 70px;
+    /* Espaço para a navbar */
 }
 
 .card-container-2 {
@@ -113,8 +129,10 @@ article {
 }
 
 .image_card-2 {
-    width: 300px; /* Aumenta a largura da imagem */
-    height: auto; /* Mantém a proporção da imagem */
+    width: 400px;
+    /* Aumenta a largura da imagem */
+    height: auto;
+    /* Mantém a proporção da imagem */
     border-radius: 8px;
     box-shadow: 0 4px 2px -2px gray;
 }

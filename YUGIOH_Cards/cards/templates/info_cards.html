@@ -31,7 +31,11 @@
         <p><strong>Level:</strong> {{ card.level }}</p>
         <p><strong>Raça:</strong> {{ card.race }}</p>
         <p><strong>Atributos:</strong> {{ card.attribute }}</p>
-        {% endif %}
+        {% endif %} 
+        <div class="container">
+            <a class="nav-link active" aria-current="page" href="{% url 'homepage' %}"><button style="background-color: blue; width: 90px;height: auto;color: white; border-radius: 10px;">Voltar</button></a>
+        </div>
     </div>
+
 </div>
 {% endblock %}
