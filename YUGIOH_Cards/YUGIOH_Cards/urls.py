@@ -22,8 +22,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.exibir_card,name = "homepage"),
-    path('accounts/',include('django.contrib.auth.urls')),
-    path('accounts/register/',views.register,name="registro"),
+    path('criador/',views.creditos,name = "creditos"),
+
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

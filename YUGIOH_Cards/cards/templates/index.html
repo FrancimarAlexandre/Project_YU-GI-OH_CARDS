@@ -6,87 +6,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     {% load static %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'home.css' %}">
 </head>
 
 <body>
     <header>
-        <div class="header-top">
-            <h1>YU-GI-OH Cards</h1>
-            <div class="user-logout">
-                <h4>{{ request.user.username }}</h4>
-                <form method="post" action="{% url 'logout' %}">
-                    {% csrf_token %}
-                    <button type="submit"><i class="fas fa-sign-out-alt"></i> SAIR</button>
-                </form>
+        <nav class="navbar navbar-expand-lg --bs-primary">
+            <div class="container-fluid">
+                <h3 class="navbar-brand">YU-GI-OH Cards</h3>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'homepage' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'creditos' %}">Créditos</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
             </div>
-        </div>
+        </nav>
     </header>
 
     <div class="container">
         {% for i in cards.object_list %}
         <div class="card-container">
-            <button type="button" class="toggleButton"><img class="image_card" src="{{ i.img }}"
-                    alt="img_card"></button>
-            <div id="div_{{ forloop.counter }}" class="hidden">
-                {% if i.tipo == "Spell Card" or i.tipo == "Trap Card" %}
-                <p>Nome: {{ i.name }}</p>
-                <b></b>
-                <p>Descrição: {{ i.desc }}</p>
-                <b></b>
-                <p>Tipo: {{ i.tipo }}</p>
-                <b></b>
-                <p>FrameType: {{ i.frameType }}</p>
-                {% elif i.tipo == "Link Monster" %}
-                <p>Nome: {{ i.name }}</p>
-                <b></b>
-                <p>Descrição: {{ i.desc }}</p>
-                <b></b>
-                <p>Tipo: {{ i.tipo }}</p>
-                <b></b>
-                <p>FrameType: {{ i.frameType }}</p>
-                <b></b>
-                <p>ATK: {{ i.atk }}</p>
-                <b></b>
-                <p>Raça: {{ i.race }}</p>
-                <b></b>
-                <p>Atributos: {{ i.attribute }}</p>
-                {% else %}
-                <p>Nome: {{ i.name }}</p>
-                <b></b>
-                <p>Descrição: {{ i.desc }}</p>
-                <b></b>
-                <p>Tipo: {{ i.tipo }}</p>
-                <b></b>
-                <p>FrameType: {{ i.frameType }}</p>
-                <b></b>
-                <p>ATK: {{ i.atk }}</p>
-                <b></b>
-                <p>DEF: {{ i.def }}</p>
-                <b></b>
-                <p>Level: {{ i.level }}</p>
-                <b></b>
-                <p>Raça: {{ i.race }}</p>
-                <b></b>
-                <p>Atributos: {{ i.attribute }}</p>
-                {% endif %}
-            </div>
+            <img class="image_card" src="{{ i.img }}" alt="img_card">
+
         </div>
         {% endfor %}
-
-        <div class="paginator">
-            {% if cards.has_previous %}
-            <a href="{% url 'homepage' %}?page={{ cards.previous_page_number }}">Anterior</a>
-            {% endif %}
-            {% if cards.has_next %}
-            <a href="{% url 'homepage' %}?page={{ cards.next_page_number }}">Próximo</a>
-            {% endif %}
-        </div>
     </div>
-    
-    <script src="{% static 'js/home.js' %}"></script>
+
+    <div class="paginator">
+        {% if cards.has_previous %}
+        <a href="{% url 'homepage' %}?page={{ cards.previous_page_number }}">Anterior</a>
+        {% endif %}
+        {% if cards.has_next %}
+        <a href="{% url 'homepage' %}?page={{ cards.next_page_number }}">Próximo</a>
+        {% endif %}
+    </div>
+
+
 </body>
 
 </html>

@@ -5,24 +5,10 @@ body {
     box-sizing: border-box;
     background-color: #f3f2ef;
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
+    flex-direction: column;
+    align-items: center; /* Centraliza horizontalmente */
+    padding-top: 60px; /* Espaço para a navbar */
     min-height: 100vh; /* Garante que o corpo ocupe toda a altura da viewport */
-    margin: 0;
-}
-
-.container {
-    display: flex;
-    flex-wrap: wrap; /* Permite que as imagens quebrem para a próxima linha, se necessário */
-    justify-content: center; /* Centraliza as imagens dentro da container */
-    gap: 10px; /* Espaçamento entre os itens */
-    max-width: 100%; /* Garante que o container não seja maior que a tela */
-    padding: 10px; /* Adiciona um pouco de espaçamento interno */
-}
-
-.image_card {
-    max-width: 220px; /* Garante que as imagens não sejam maiores que o botão */
-    height: auto; /* Mantém a proporção da imagem */
 }
 
 header {
@@ -30,8 +16,6 @@ header {
     color: #ffffff;
     padding: 10px 0;
     text-align: center;
-    display: flex;
-    justify-content: center;
     position: fixed;
     width: 100%;
     top: 0;
@@ -45,11 +29,55 @@ header {
     align-items: center;
 }
 
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que as imagens quebrem para a próxima linha, se necessário */
+    justify-content: center; /* Centraliza as imagens dentro do container */
+    gap: 10px; /* Espaçamento entre os itens */
+    padding: 10px; /* Adiciona espaçamento interno */
+    flex-grow: 1; /* Faz o container crescer para ocupar o espaço disponível */
+}
 
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px; /* Largura fixa para as imagens */
+    height: auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 2px -2px gray;
+    padding: 10px;
+}
+
+.image_card {
+    max-width: 100%; /* Garante que as imagens não sejam maiores que o container */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+.paginator {
+    margin: 20px 0;
+}
+
+.paginator a {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 0 5px;
+}
+
+.paginator a:hover,
+.paginator a:focus {
+    background-color: #0056b3;
+}
 
 .hidden {
     display: none;
 }
+
 article {
     background-color: #fff;
     margin: 20px 0;
@@ -58,36 +86,3 @@ article {
     border-radius: 8px;
     box-shadow: 0 4px 2px -2px gray;
 }
-
-
-/* Ajustes para o nome de usuário e botão SAIR */
-.user-logout {
-    flex-direction: column;
-    /* Organiza os elementos um abaixo do outro */
-    align-items: flex-end;
-    /* Alinha os elementos à direita */
-}
-
-/* Espaçamento entre o nome de usuário e o botão SAIR */
-.user-logout h4,
-.user-logout form {
-    margin: 0 0 5px;
-    /* Ajusta conforme necessário */
-}
-
-.button-link {
-    background-color: #0073b1;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 20px;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-.button-link:hover,
-.button-link:focus {
-    background-color: #0056b3;
-    color: white;
-    text-decoration: none;
-}
-
