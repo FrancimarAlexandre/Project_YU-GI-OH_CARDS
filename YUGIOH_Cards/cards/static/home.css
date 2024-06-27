@@ -83,3 +83,45 @@ article {
     border-radius: 8px;
     box-shadow: 0 4px 2px -2px gray;
 }
+.header-top {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container-2 {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    margin-top: 70px; /* Espaço para a navbar */
+}
+
+.card-container-2 {
+    flex: 0 0 auto;
+    margin-right: 20px;
+}
+
+.image_card-2 {
+    width: 300px; /* Aumenta a largura da imagem */
+    height: auto; /* Mantém a proporção da imagem */
+    border-radius: 8px;
+    box-shadow: 0 4px 2px -2px gray;
+}
+
+.card-info {
+    flex: 1 1 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 2px -2px gray;
+}
+
+.card-info p {
+    margin: 10px 0;
+}
+
+.card-info strong {
+    font-weight: bold;
+}
