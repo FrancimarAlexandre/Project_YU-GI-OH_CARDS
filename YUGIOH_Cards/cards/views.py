@@ -1,8 +1,14 @@
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from django.contrib.auth import login, authenticate
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.core.paginator import Paginator
 import requests
 # Create your views here.
 
+@login_required
 def exibir_card(request):
     requisicao = requests.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?language=pt")
     dados = requisicao.json()['data']
@@ -78,7 +84,7 @@ def exibir_card(request):
     # Passando a lista de cards para o template
     return render(request, 'index.html', {'cards': page})
 
-
+@login_required
 def info_card(request, id):
     requisicao = requests.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?language=pt")
     dados = requisicao.json().get('data', [])
@@ -147,3 +153,27 @@ def info_card(request, id):
 
     return render(request, 'info_cards.html', {'card': card_dados})
 
+def register(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        # Check if user already exists
+        if User.objects.filter(username=username).exists():
+            messages.error(request, 'Nome de usuário já existe')
+            return redirect('registro')
+        elif User.objects.filter(email=email).exists():
+             messages.error(request, 'E-mail já cadastrado')
+             return redirect('registro')
+        else:
+            # Create a new user instance and save it
+            user = User.objects.create_user(username=username, email=email, password=password)
+            
+            # Automatically log the user in after registration (optional)
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('homepage')
+    
+    return render(request, 'registration/register.html')
