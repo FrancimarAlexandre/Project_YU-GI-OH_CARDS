@@ -3,23 +3,25 @@
 {% block title %} Home Page {% endblock %}
 
 {% block conteudo %}
-    <div class="container">
-        {% for i in cards.object_list %}
-        <div class="card-container">
+<div class="container">
+    {% for i in cards.object_list %}
+    <div class="card-container">
+        <a href="{% url 'info_Cards' i.id %}">
             <img class="image_card" src="{{ i.img }}" alt="img_card">
+        </a>
 
-        </div>
-        {% endfor %}
     </div>
+    {% endfor %}
+</div>
 
-    <div class="paginator">
-        {% if cards.has_previous %}
-        <a href="{% url 'homepage' %}?page={{ cards.previous_page_number }}">Anterior</a>
-        {% endif %}
-        {% if cards.has_next %}
-        <a href="{% url 'homepage' %}?page={{ cards.next_page_number }}">Próximo</a>
-        {% endif %}
-    </div>
+<div class="paginator">
+    {% if cards.has_previous %}
+    <a href="{% url 'homepage' %}?page={{ cards.previous_page_number }}">Anterior</a>
+    {% endif %}
+    {% if cards.has_next %}
+    <a href="{% url 'homepage' %}?page={{ cards.next_page_number }}">Próximo</a>
+    {% endif %}
+</div>
 
 
 {% endblock %}

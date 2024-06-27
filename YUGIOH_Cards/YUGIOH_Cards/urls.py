@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.exibir_card,name = "homepage"),
     path('criador/',views.creditos,name = "creditos"),
+    path('info_card/<int:id>/',views.info_card,name = "info_Cards"),
 
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

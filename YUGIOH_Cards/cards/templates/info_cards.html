@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ card.name }}{% endblock %}
+
+{% block conteudo %}
+
+
+<div class="container">
+    <div class="card-container">
+    <img class="image_card" src="{{ card.img }}" alt="img_card">
+    </div>
+        {% if card.type == "Spell Card" or card.type == "Trap Card" %}
+        <p>Nome: {{ card.name }}</p>
+        <b></b>
+        <p>Descrição: {{ card.desc }}</p>
+        <b></b>
+        <p>Tipo: {{card.type }}</p>
+        <b></b>
+        <p>FrameType: {{ card.frameType }}</p>
+        {% elif card.type == "Link Monster" %}
+        <p>Nome: {{ card.name }}</p>
+        <b></b>
+        <p>Descrição: {{ card.desc }}</p>
+        <b></b>
+        <p>Tipo: {{ card.type }}</p>
+        <b></b>
+        <p>FrameType: {{ card.frameType }}</p>
+        <b></b>
+        <p>ATK: {{ card.atk }}</p>
+        <b></b>
+        <p>Raça: {{ card.race }}</p>
+        <b></b>
+        <p>Atributos: {{ card.attribute }}</p>
+        {% else %}
+        <p>Nome: {{ card.name }}</p>
+        <b></b>
+        <p>Descrição: {{ card.desc }}</p>
+        <b></b>
+        <p>Tipo: {{ card.type }}</p>
+        <b></b>
+        <p>FrameType: {{ card.frameType }}</p>
+        <b></b>
+        <p>ATK: {{ card.atk }}</p>
+        <b></b>
+        <p>DEF: {{ card.def }}</p>
+        <b></b>
+        <p>Level: {{ card.level }}</p>
+        <b></b>
+        <p>Raça: {{ card.race }}</p>
+        <b></b>
+        <p>Atributos: {{ card.attribute }}</p>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
