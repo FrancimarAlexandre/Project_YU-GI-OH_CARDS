@@ -18,7 +18,7 @@
     <header class="header-top">
         <nav class="navbar navbar-expand-lg --bs-primary">
             <div class="container-fluid">
-               <h2 class="title">YU-GI-OH CARDS</h2>
+                <h2 class="title">YU-GI-OH CARDS</h2>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -26,10 +26,13 @@
                 </button>
             </div>
             <div class="user-logout">
-                <h4>{{ request.user.username }}</h4>
+                <a href="{% url 'pf_user' request.user.id %}">
+                    <h4>{{ request.user.username }}</h4>
+                </a>
                 <form method="post" action="{% url 'logout' %}">
                     {% csrf_token %}
-                    <button type="submit" style="background-color: aquamarine;"><i class="fas fa-sign-out-alt"></i> SAIR</button>
+                    <button type="submit" style="background-color: aquamarine;"><i class="fas fa-sign-out-alt"></i>
+                        SAIR</button>
                 </form>
             </div>
         </nav>
