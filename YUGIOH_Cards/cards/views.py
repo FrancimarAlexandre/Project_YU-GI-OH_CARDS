@@ -74,6 +74,7 @@ def exibir_card(request):
                 cards = Paginator(lista_cards,100)
                 page_num = request.GET.get('page')
                 page = cards.get_page(page_num)
+
     # Passando a lista de cards para o template
     return render(request, 'index.html', {'cards': page})
 
