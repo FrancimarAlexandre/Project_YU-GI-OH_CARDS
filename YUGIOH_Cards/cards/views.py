@@ -150,3 +150,8 @@ def info_card(request, id):
 
 def creditos(request):
       return render(request,'credito.html')
+
+
+
+def Count_Life(request):
+     return render(request,'countlife.html')

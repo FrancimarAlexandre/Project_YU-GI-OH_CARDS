@@ -11,8 +11,9 @@ body {
     background-size: cover;
 }
 
+
 header {
-    background-color: rgba(0, 123, 255, 0.8); /* Mudança para permitir transparência */
+    background-color: #0056b3; /* Header totalmente transparente */
     color: #ffffff;
     padding: 10px 0;
     text-align: center;
@@ -22,12 +23,19 @@ header {
     z-index: 1000;
 }
 
-
 .header-top {
     width: 80%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.title {
+    font-size: 45px;
+    text-decoration: dotted;
+    color: #fff; /* Cor branca para se destacar no fundo */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para destacar o texto */
+    margin: 0;
 }
 
 .container {
