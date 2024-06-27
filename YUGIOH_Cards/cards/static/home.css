@@ -2,17 +2,17 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    background-color: #f3f2ef;
     display: flex;
     flex-direction: column;
     align-items: center; /* Centraliza horizontalmente */
     padding-top: 60px; /* Espaço para a navbar */
     min-height: 100vh; /* Garante que o corpo ocupe toda a altura da viewport */
+    background: url('img/img_index.gif') no-repeat center center fixed;
+    background-size: cover;
 }
 
 header {
-    background-color: #007bff;
+    background-color: rgba(0, 123, 255, 0.8); /* Mudança para permitir transparência */
     color: #ffffff;
     padding: 10px 0;
     text-align: center;
@@ -21,6 +21,7 @@ header {
     top: 0;
     z-index: 1000;
 }
+
 
 .header-top {
     width: 80%;
