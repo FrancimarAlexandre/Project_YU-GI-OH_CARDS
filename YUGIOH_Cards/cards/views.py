@@ -77,7 +77,7 @@ def exibir_card(request):
                 lista_cards.append(card_data)
 
                 # Páginator
-                cards = Paginator(lista_cards,100)
+                cards = Paginator(lista_cards,50)
                 page_num = request.GET.get('page')
                 page = cards.get_page(page_num)
 

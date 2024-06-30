@@ -11,6 +11,21 @@
     <link rel="stylesheet" href="{% static 'home.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .a-usuario:hover {
+            text-shadow: 0 0 25px rgb(6, 19, 75),
+            0 0 50px rgb(6, 19, 75);
+        }
+
+        .usuario {
+            display: flex;
+            align-items: center;
+            position: relative;
+            left: 400%;
+            justify-content: flex-end;
+            gap: 10px; /* Adjust the gap between elements if needed */
+        }
+    </style>
 </head>
 
 <body>
@@ -24,16 +39,18 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-            </div>
-            <div class="user-logout">
-                <a href="{% url 'pf_user' request.user.id %}">
-                    <h4>{{ request.user.username }}</h4>
-                </a>
-                <form method="post" action="{% url 'logout' %}">
-                    {% csrf_token %}
-                    <button type="submit" style="background-color: aquamarine;"><i class="fas fa-sign-out-alt"></i>
-                        SAIR</button>
-                </form>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="usuario ms-auto">
+                        <a href="{% url 'pf_user' request.user.id %}" class="a-usuario"
+                            style="text-decoration: none; color:white;font-size: 20px;">
+                            <h4>{{ request.user.username }}</h4>
+                        </a>
+                        <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" style="background-color: aquamarine;"><i class="fas fa-sign-out-alt"></i> SAIR</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </nav>
     </header>

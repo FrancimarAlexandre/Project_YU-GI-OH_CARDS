@@ -152,14 +152,6 @@ article {
 .card-info strong {
     font-weight: bold;
 }
-.user-logout {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    left: 650px;
-    position: relative;
-}
 
-.user-logout h4 {
-    margin: 0 0 5px;
-}
+
+
