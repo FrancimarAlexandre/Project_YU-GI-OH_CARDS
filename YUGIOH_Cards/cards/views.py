@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator
+from django.views.decorators.cache import cache_page
 import requests
 # Create your views here.
+
 
 
 #
@@ -77,16 +79,14 @@ def requests_api_card(request,requisicao):
             page = cards.get_page(page_num)
 
         return page
-
-
+@cache_page(60*5)
 def exibir_card(request):
-
     requisicao = requests.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?language=pt")
     page = requests_api_card(request,requisicao)
     # Passando a lista de cards para o template
     return render(request, 'index.html', {'cards': page})
 
-
+@cache_page(60*5)
 def info_card(request, id):
     requisicao = requests.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?language=pt")
     dados = requisicao.json().get('data', [])
