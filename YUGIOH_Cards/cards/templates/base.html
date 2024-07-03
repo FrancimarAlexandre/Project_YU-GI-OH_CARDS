@@ -21,6 +21,13 @@
             <div class="container-fluid">
                 <h2 class="title">YU-GI-OH CARDS</h2>
             </div>
+            <div class="user-logout">
+                <h4>{{ request.user.username }}</h4>
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit"><i class="fas fa-sign-out-alt"></i> SAIR</button>
+                </form>
+            </div>
         </nav>
     </header>
     {% block conteudo %}
