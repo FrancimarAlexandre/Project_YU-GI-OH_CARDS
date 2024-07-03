@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+</head>
+
+<body>
+    <div class="login-container">
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-input">
+                <input type="text" id="username" name="username" required placeholder="Usuário">
+            </div>
+            <div class="form-input">
+                <input type="password" id="password" name="password" required placeholder="Senha">
+            </div>
+            <button type="submit">Entrar</button>
+            <p>Não tem uma conta? <a href="{% url 'registro' %}">Cadastre-se</a></p>
+            {% for k,v in form.errors.items %}
+            {{ v }}
+            {% endfor %}
+        </form>
+    </div>
+</body>
+
+</html>

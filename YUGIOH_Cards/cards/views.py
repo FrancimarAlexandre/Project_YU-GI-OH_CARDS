@@ -1,12 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.core.paginator import Paginator
 from django.views.decorators.cache import cache_page
+from django.contrib.auth.models import User
+from django.contrib.auth import login, authenticate
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 import requests
 # Create your views here.
 
 
 
-#
+
 def requests_api_card(request,requisicao):
     dados = requisicao.json()['data']
     lista_cards = []  # Lista para armazenar os dados de cada card
@@ -80,6 +84,7 @@ def requests_api_card(request,requisicao):
 
         return page
 @cache_page(60*5)
+@login_required
 def exibir_card(request):
     requisicao = requests.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?language=pt")
     page = requests_api_card(request,requisicao)
@@ -87,6 +92,7 @@ def exibir_card(request):
     return render(request, 'index.html', {'cards': page})
 
 @cache_page(60*5)
+@login_required
 def info_card(request, id):
     requisicao = requests.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?language=pt")
     dados = requisicao.json().get('data', [])
@@ -155,3 +161,27 @@ def info_card(request, id):
 
     return render(request, 'info_cards.html', {'card': card_dados})
 
+def register(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        # Check if user already exists
+        if User.objects.filter(username=username).exists():
+            messages.error(request, 'Nome de usuário já existe')
+            return redirect('registro')
+        elif User.objects.filter(email=email).exists():
+             messages.error(request, 'E-mail já cadastrado')
+             return redirect('registro')
+        else:
+            # Create a new user instance and save it
+            user = User.objects.create_user(username=username, email=email, password=password)
+            
+            # Automatically log the user in after registration (optional)
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('homepage')
+    
+    return render(request, 'registration/register.html')
