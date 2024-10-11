@@ -6,8 +6,6 @@ import requests
 # Create your views here.
 
 
-
-
 def requests_api_card(request,requisicao):
     dados = requisicao.json()['data']
     lista_cards = []  # Lista para armazenar os dados de cada card
